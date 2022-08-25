@@ -51,11 +51,11 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.4.0</muleVersion>
-						<!-- <connectedAppClientId>${ap.clientid}</connectedAppClientId> <connectedAppClientSecret>${ap.clientsecret}</connectedAppClientSecret> 
-							<connectedAppGrantType>client_credentials</connectedAppGrantType> -->
+						<connectedAppClientId>${ap.clientid}</connectedAppClientId>
+						<connectedAppClientSecret>${ap.clientsecret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<!-- <username>${username}</username> <password>${password}</password> -->
-
-						<server>cloudhub-deploy</server>
+						<!-- <server>cloudhub-deploy</server> -->
 						<businessGroupId>${businessGroupId}</businessGroupId>
 						<applicationName>${applicationName}</applicationName>
 						<environment>${environment}</environment>
