@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>3d21c978-b13d-49d8-85a1-a34526d697e6</groupId>
+		<artifactId>solutions-parent-pom</artifactId>
+		<version>1.0.1</version>
+		<relativePath>../parent-pom/pom.xml</relativePath>
+	</parent>
+
+	<groupId>com.mycompany</groupId>
+	<artifactId>check-in-app</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>mule-application</packaging>
+
+	<name>check-in-app</name>
+
+	<properties>
+		<apiversion>v1</apiversion>
+	</properties>
+
+	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
+				<configuration>
+					<!-- Cloudhub 1.0 Deployment -->
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
+						<!-- <connectedAppClientId>${ap.clientid}</connectedAppClientId> <connectedAppClientSecret>${ap.clientsecret}</connectedAppClientSecret> 
+							<connectedAppGrantType>client_credentials</connectedAppGrantType> -->
+						<!-- <username>${username}</username> <password>${password}</password> -->
+
+						<server>cloudhub-deploy</server>
+						<businessGroupId>${businessGroupId}</businessGroupId>
+						<applicationName>${applicationName}</applicationName>
+						<environment>${environment}</environment>
+						<objectStoreV2>true</objectStoreV2>
+						<persistentQueues>false</persistentQueues>
+						<workers>1</workers>
+						<workerType>MICRO</workerType>
+						<properties>
+							<api.id>${api.id}</api.id>
+							<encrypt.key>${encrypt.key}</encrypt.key>
+							<anypoint.platform.client_id>${client_id}</anypoint.platform.client_id>
+							<anypoint.platform.client_secret>${client_secret}</anypoint.platform.client_secret>
+						</properties>
+					</cloudHubDeployment>
+					<classifier>mule-application</classifier>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>p12</nonFilteredFileExtension>
+						<nonFilteredFileExtension>crt</nonFilteredFileExtension>
+						<nonFilteredFileExtension>pem</nonFilteredFileExtension>
+						<nonFilteredFileExtension>jar</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-http-connector</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.connectors</groupId>
+			<artifactId>mule-sockets-connector</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+		<dependency>
+			<groupId>3d21c978-b13d-49d8-85a1-a34526d697e6</groupId>
+			<artifactId>check-in-papi</artifactId>
+			<version>1.0.0</version>
+			<classifier>oas</classifier>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-apikit-module</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mulesoft.modules</groupId>
+			<artifactId>mule-secure-configuration-property-module</artifactId>
+			<classifier>mule-plugin</classifier>
+		</dependency>
+
+	</dependencies>
+
+</project>

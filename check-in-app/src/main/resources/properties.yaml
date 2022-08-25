@@ -1,0 +1,13 @@
+# which values should be parametrized
+
+https.port: "8082"
+  
+api:
+  id: "18086603" #default dev env ID
+  majorVersion: "${apiversion}"
+  
+# TLS config properties
+tls.keystore:
+  type: "PKCS12"
+  path: "check-in-papi.p12"
+  alias: "server"
