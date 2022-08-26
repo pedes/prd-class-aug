@@ -106,6 +106,6 @@ jobs:
         AUTHOR: "Andres Morales"
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy -Dap.clientid=${{ secrets.AP_CLIENT_ID }} -Dap.clientsecret=${{ secrets.AP_CLIENT_SECRET }} -DbusinessGroupId="3d21c978-b13d-49d8-85a1-a34526d697e6" -DapplicationName="checkin-cicd-acm2608"  -Denvironment="dev" -Dapi.id="18086603" -Dencrypt.key="secure12345" -Dclient_id="8b9b983440434b42b9fc7d93786de6a1" -Dclient_secret="5f17CF843bF64Cb3805A3ea0927AAAF1"           
+        mvn deploy --file check-in-app/pom.xml -DmuleDeploy -Dap.clientid=${{ secrets.AP_CLIENT_ID }} -Dap.clientsecret=${{ secrets.AP_CLIENT_SECRET }} -DbusinessGroupId="3d21c978-b13d-49d8-85a1-a34526d697e6" -DapplicationName="checkin-cicd-acm2608"  -Denvironment="dev" -Dapi.id="18086603" -Dencrypt.key="secure12345" -Dclient_id="8b9b983440434b42b9fc7d93786de6a1" -Dclient_secret="5f17CF843bF64Cb3805A3ea0927AAAF1"           
   
   
